@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        {{-- Metas and title --}}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Social media API | Welcome</title>
-
-        {{-- Fonts and icons --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        {{-- CSS stylesheets --}}
         <link rel="stylesheet" type="text/css" href="{{ url('theme.css') }}">
     </head>
     <body class="page">
-        {{-- Logo and title --}}
         <div class="logo">
             <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
                 <g clip-path="url(#clip0)" fill="#EF3B2D">
@@ -24,8 +18,6 @@
             <h1>Social media API</h1>
         </div>
         <hr>
-
-        {{-- Useful links --}}
         <div class="links">
             <div>
                 <i class="fa-brands fa-github"></i>

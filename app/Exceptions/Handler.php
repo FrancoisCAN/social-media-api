@@ -41,7 +41,7 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            // No exception handling callbacks.
+            // No callbacks.
         });
     }
 }
