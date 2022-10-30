@@ -1,0 +1,50 @@
+html, body {
+    height: 100%;
+}
+
+.page {
+    align-items: center;
+    background-color: #1a202c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+}
+
+.page .logo {
+    display: flex;
+    flex-direction: column;
+}
+.page .logo h1 {
+    color: #fff;
+    font-family: Nunito, sans-serif;
+    font-size: 3rem;
+}
+.page .logo svg {
+    height: 180px;
+}
+
+.page hr {
+    width: 250px;
+}
+
+.page .links {
+    display: flex;
+    margin-top: 50px;
+}
+.page .links a {
+    color: #fff;
+    font-family: Nunito, sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+}
+.page .links span {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0 25px;
+}
+.page .links > div i {
+    color: #fff;
+    font-size: 1rem;
+    margin-right: 5px;
+}
