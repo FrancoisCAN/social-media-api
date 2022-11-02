@@ -2,11 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Enums\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends Factory
  */
 class UserFactory extends Factory
 {
@@ -15,14 +17,22 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'avatar' => fake()->filePath(),
+            'bio' => Str::random(25),
+            'city' => fake()->city(),
+            'country' => fake()->countryCode(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'firstname' => fake()->firstName(),
+            'is_online' => fake()->boolean(),
+            'lastname' => fake()->lastName(),
+            'password' => Hash::make('password'),
+            'phone' => fake()->phoneNumber(),
             'remember_token' => Str::random(10),
+            'role_id' => Role::MEMBER,
         ];
     }
 
@@ -31,7 +41,7 @@ class UserFactory extends Factory
      *
      * @return static
      */
-    public function unverified()
+    public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
