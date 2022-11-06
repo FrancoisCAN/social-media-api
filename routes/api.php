@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\AuthenticationController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::fallback(function () {
+    return response()->json([
+        'status' => [
+            'error' => 'Route not found. Please check the documentation: https://github.com/FrancoisCAN/social-media-api.',
+            'state' => false,
+        ], Response::HTTP_NOT_FOUND
+    ]);
+});
 
 Route::middleware('auth.api')->group(function () {
     Route::prefix('v1')->group(function () {
