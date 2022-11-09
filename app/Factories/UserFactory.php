@@ -2,7 +2,7 @@
 
 namespace App\Factories;
 
-use App\Enums\Role;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,6 +19,8 @@ class UserFactory
      * @param string $lastname
      * @param string $password
      * @param string $phone
+     * @param Role $role
+     *
      * @return User
      */
     public function create(
@@ -30,6 +32,7 @@ class UserFactory
         string $lastname,
         string $password,
         string $phone,
+        Role $role
     ): User {
         $user = new User;
         $user->city = $city;
@@ -40,7 +43,7 @@ class UserFactory
         $user->lastname = $lastname;
         $user->password = Hash::make($password);
         $user->phone = $phone;
-        $user->role_id = Role::MEMBER;
+        $user->role()->associate($role);
         $user->save();
 
         return $user;

@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum Url:string
+enum ExternalUrl:string
 {
     case IP_API = 'http://ip-api.com/json/';
 }

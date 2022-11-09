@@ -7,4 +7,16 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'X-Api-Key' => env('API_KEY'),
+            'X-Requested-With' => 'XMLHttpRequest',
+        ]);
+    }
 }

@@ -19,10 +19,10 @@ class RoleSeeder extends Seeder
                 'entitled' => 'Founder',
             ],
             [
-                'entitled' => 'Co-Founder',
+                'entitled' => 'Moderator',
             ],
             [
-                'entitled' => 'Moderator',
+                'entitled' => 'Contributor',
             ],
             [
                 'entitled' => 'Member',
