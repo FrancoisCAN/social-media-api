@@ -42,7 +42,7 @@ class AuthenticationController extends Controller
     /**
      * Register a new user as a member.
      *
-     * @var RegisterRequest
+     * @param RegisterRequest $registerRequest
      *
      * @return JsonResponse
      */
@@ -57,8 +57,9 @@ class AuthenticationController extends Controller
                 true,
                 $registerRequest->input('lastname'),
                 $registerRequest->input('password'),
+                Role::find(RoleEnum::MEMBER),
+                $registerRequest->input('bio'),
                 $registerRequest->input('phone'),
-                Role::find(RoleEnum::MEMBER)
             );
 
             $response = [
@@ -121,11 +122,11 @@ class AuthenticationController extends Controller
     /**
      * Login a user.
      *
-     * @var LoginRequest
+     * @param LoginRequest $loginRequest
      *
      * @return JsonResponse
      */
-    public function login(LoginRequest $loginRequest)
+    public function login(LoginRequest $loginRequest): JsonResponse
     {
         $user = User::where('email', $loginRequest->email)->first();
         if (!$user || !Hash::check($loginRequest->password, $user->password)) {
@@ -152,11 +153,11 @@ class AuthenticationController extends Controller
     /**
      * Signout a user.
      *
-     * @var Request
+     * @param Request $request
      *
      * @return JsonResponse
      */
-    public function signout(Request $request)
+    public function signout(Request $request): JsonResponse
     {
         $user = $request->user();
         $user->is_online = false;

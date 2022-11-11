@@ -18,8 +18,9 @@ class UserFactory
      * @param bool $is_online
      * @param string $lastname
      * @param string $password
-     * @param string $phone
      * @param Role $role
+     * @param string|null $bio
+     * @param string|null $phone
      *
      * @return User
      */
@@ -31,10 +32,12 @@ class UserFactory
         bool $is_online,
         string $lastname,
         string $password,
-        string $phone,
-        Role $role
+        Role $role,
+        string $bio = null,
+        string $phone = null
     ): User {
         $user = new User;
+        $user->bio = $bio;
         $user->city = $city;
         $user->country = $country;
         $user->email = $email;

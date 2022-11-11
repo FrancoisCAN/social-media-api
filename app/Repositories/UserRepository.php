@@ -26,12 +26,14 @@ class UserRepository
      * @param bool $is_online
      * @param string $lastname
      * @param string $password
-     * @param string $phone
      * @param Role $role
+     * @param string|null $bio
+     * @param string|null $phone
      *
      * @return User
      */
     public function store(
+
         string $city,
         string $country,
         string $email,
@@ -39,11 +41,12 @@ class UserRepository
         bool $is_online,
         string $lastname,
         string $password,
-        string $phone,
         Role $role,
+        string $bio = null,
+        string $phone = null
     ): User {
         $user = $this->userFactory
-            ->create($city, $country, $email, $firstname, $is_online, $lastname, $password, $phone, $role);
+            ->create($city, $country, $email, $firstname, $is_online, $lastname, $password, $role, $bio, $phone);
         $user->save();
 
         return $user;
