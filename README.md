@@ -21,7 +21,7 @@ Dans l'objectif d'améliorer mes connaissances principalement sur:
 - Les tests unitaires **PHPUnit**
 
 ### Pourquoi Laravel ?
-**Laravel** est un framework `PHP` très accessible et très bien documenté, [voir plus ici](LARAVEL.md).
+**Laravel** est un framework `PHP` très accessible et très bien documenté, [voir plus ici](docs/LARAVEL.md).
 
 ### Pourquoi une API de réseau social ?
 Les réseaux sociaux sont un moyen de réunir à un seul et unique endroit plusieurs fonctionnalités: messagerie instantanée, profils utilisateurs, relations amicales, gestion d'images, de vidéos et bien d'autres encore.

@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "ac74b668-d1ba-4e4d-b93c-763d3f3f0fe6",
+		"name": "Social media API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6555577"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set('AUTH_TOKEN', response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"city\": \"Lyon\",\r\n    \"country\": \"France\",\r\n    \"email\": \"{{USER_EMAIL}}\",\r\n    \"firstname\": \"{{USER_FIRSTNAME}}\",\r\n    \"ip\": \"86.194.72.38\",\r\n    \"lastname\": \"{{USER_LASTNAME}}\",\r\n    \"password\": \"{{USER_PASSWORD}}\",\r\n    \"password_confirmation\": \"{{USER_PASSWORD}}\",\r\n    \"phone\": \"{{USER_PHONE}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}{{APP_URL_AUTH}}register",
+							"host": [
+								"{{APP_URL}}{{APP_URL_AUTH}}register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set('AUTH_TOKEN', response.token);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{USER_EMAIL}}\",\r\n    \"password\": \"{{USER_PASSWORD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/v1/auth/signout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Friends",
+			"item": []
+		},
+		{
+			"name": "Posts",
+			"item": []
+		},
+		{
+			"name": "Conversations",
+			"item": []
+		},
+		{
+			"name": "Settings",
+			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({key: 'X-Requested-With', value: 'XMLHttpRequest' });",
+					"pm.request.headers.add({key: 'X-Api-Key', value: pm.collectionVariables.get('API_KEY')});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_KEY",
+			"value": "jJcPY4yaL8WTzTwKhUYd5P22SNpme3Ty",
+			"type": "string"
+		},
+		{
+			"key": "APP_URL",
+			"value": "http://localhost/api/v1/",
+			"type": "string"
+		},
+		{
+			"key": "APP_URL_AUTH",
+			"value": "auth/",
+			"type": "string"
+		},
+		{
+			"key": "AUTH_TOKEN",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "USER_EMAIL",
+			"value": "test.user@gmail.com",
+			"type": "string"
+		},
+		{
+			"key": "USER_FIRSTNAME",
+			"value": "Test",
+			"type": "string"
+		},
+		{
+			"key": "USER_LASTNAME",
+			"value": "User",
+			"type": "string"
+		},
+		{
+			"key": "USER_PASSWORD",
+			"value": "password",
+			"type": "string"
+		},
+		{
+			"key": "USER_PHONE",
+			"value": "0601020304",
+			"type": "string"
+		}
+	]
+}
