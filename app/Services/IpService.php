@@ -9,17 +9,17 @@ use Illuminate\Support\Facades\Http;
 class IpService
 {
     /**
-     * Get informations on a given IP address.
+     * Get information on a given IP address.
      * @see https://ip-api.com/
      *
-     * @var string ip
+     * @param string $ip
      *
      * @return array
      * @throws RequestException
      */
     public function getIpInformations(string $ip): array
     {
-        $response = Http::get(ExternalUrl::IP_API->value.$ip, [
+        $response = Http::get(ExternalUrl::IP_API.$ip, [
             'fields' => 'status,message,countryCode,regionName,zip,org',
         ]);
 

@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-enum Role:int
+class Role
 {
-    case FOUNDER = 1;
-    case MODERATOR = 2;
-    case CONTRIBUTOR = 3;
-    case MEMBER = 4;
+    public final const FOUNDER = 1;
+    public final const MODERATOR = 2;
+    public final const CONTRIBUTOR = 3;
+    public final const MEMBER = 4;
 }

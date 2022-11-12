@@ -2,7 +2,9 @@
 
 namespace App\Enums;
 
-enum ExternalUrl:string
+class ExternalUrl
 {
-    case IP_API = 'http://ip-api.com/json/';
+    public final const IP_API = 'http://ip-api.com/json/';
 }
+
+

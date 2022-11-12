@@ -2,8 +2,8 @@
 
 namespace App\Enums;
 
-enum LoggingContext:string
+class LoggingContext
 {
-    case APPLICATION = '[APP]';
-    case AUTHENTICATION = '[AUTHENTICATION]';
+    public final const APPLICATION = '[APPLICATION]';
+    public final const AUTHENTICATION = '[AUTHENTICATION]';
 }
