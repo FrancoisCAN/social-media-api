@@ -17,15 +17,19 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             [
                 'entitled' => 'Founder',
+                'description' => 'Is given to the founder of the application and hold all rights.',
             ],
             [
                 'entitled' => 'Moderator',
+                'description' => 'Must ensure that the application is safe. It has many rights.',
             ],
             [
                 'entitled' => 'Contributor',
+                'description' => 'An upgraded version of the member with the right to contribute to the projects by submitting ideas.',
             ],
             [
                 'entitled' => 'Member',
+                'description' => 'Basic version of the user.',
             ]
         ]);
     }
