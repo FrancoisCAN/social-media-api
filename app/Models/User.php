@@ -19,8 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'city',
-        'country',
+        'bio',
         'email',
         'firstname',
         'is_online',
@@ -37,6 +36,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'city_id',
+        'role_id',
     ];
 
     /**
@@ -59,12 +60,22 @@ class User extends Authenticatable
     }
 
     /**
-     * A user has a role.
+     * A user belongs to a role.
      *
      * @return BelongsTo
      */
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * A user belongs to a city.
+     *
+     * @return BelongsTo
+     */
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
     }
 }

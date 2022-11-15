@@ -25,7 +25,7 @@ class Device extends Model
     ];
 
     /**
-     * A device is assigned to a user.
+     * A device belongs to a user.
      *
      * @return BelongsTo
      */

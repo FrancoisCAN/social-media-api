@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\v1\AuthenticationController;
 use App\Repositories\DeviceRepository;
 use App\Repositories\UserRepository;
 use App\Services\IpService;
+use Database\Seeders\CitySeeder;
+use Database\Seeders\CountrySeeder;
 use Database\Seeders\RoleSeeder;
 use Exception;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -28,6 +30,8 @@ class AuthenticationControllerTest extends TestCase
     {
         parent::setUp();
 
+        $this->seed(CountrySeeder::class);
+        $this->seed(CitySeeder::class);
         $this->seed(RoleSeeder::class);
 
         $this->ipInformationsResponse = [
@@ -42,8 +46,8 @@ class AuthenticationControllerTest extends TestCase
             'password' => 'password',
         ];
         $this->registerPayload = [
-            'city' => 'City 1',
-            'country' => 'Country 1',
+            'bio' => 'Bio 1',
+            'city' => 1,
             'email' => 'test.user@gmail.com',
             'firstname' => 'Test',
             'ip' => '255.0.0.0',

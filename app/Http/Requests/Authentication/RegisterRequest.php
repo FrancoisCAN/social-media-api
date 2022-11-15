@@ -24,8 +24,8 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'city' => 'required',
-            'country' => 'required',
+            'bio' => 'max:128',
+            'city' => 'between:1,12|numeric|required',
             'email' => 'email:rfc,dns|required',
             'firstname' => 'max:24|min:3|required',
             'ip' => 'ip|required',
@@ -43,8 +43,9 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'city.between' => 'Must be a valid ID.',
+            'city.numeric' => 'Must be an ID.',
             'city.required' => 'City is required.',
-            'country.required' => 'Country is required.',
             'email.email' => 'Must be a valid email.',
             'email.required' => 'Email is required.',
             'firstname.max' => 'Firstname must not exceed 24 characters.',

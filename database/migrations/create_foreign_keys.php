@@ -27,6 +27,7 @@ return new class extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('role_id')->references('id')->on('roles');
         });
     }
@@ -38,7 +39,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('countries', function (Blueprint $table) {
+        Schema::table('cities', function (Blueprint $table) {
             $table->dropForeign('cities_country_id_foreign');
             $table->dropColumn('country_id');
         });
@@ -49,13 +50,15 @@ return new class extends Migration
         });
 
         Schema::table('rights_roles', function (Blueprint $table) {
-            $table->dropForeign('rights_role_id_foreign');
-            $table->dropForeign('roles_right_id_foreign');
+            $table->dropForeign('rights_roles_right_id_foreign');
+            $table->dropForeign('rights_roles_role_id_foreign');
             $table->dropColumn('right_id');
             $table->dropColumn('role_id');
         });
 
         Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_city_id_foreign');
+            $table->dropColumn('city_id');
             $table->dropForeign('users_role_id_foreign');
             $table->dropColumn('role_id');
         });

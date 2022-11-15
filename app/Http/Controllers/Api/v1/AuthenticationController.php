@@ -6,6 +6,7 @@ use App\Enums\Role as RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Authentication\LoginRequest;
 use App\Http\Requests\Authentication\RegisterRequest;
+use App\Models\City;
 use App\Models\Role;
 use App\Models\User;
 use App\Repositories\DeviceRepository;
@@ -50,13 +51,12 @@ class AuthenticationController extends Controller
     {
         try {
             $user = $this->userRepository->store(
-                $registerRequest->input('city'),
-                $registerRequest->input('country'),
                 $registerRequest->input('email'),
                 $registerRequest->input('firstname'),
                 true,
                 $registerRequest->input('lastname'),
                 $registerRequest->input('password'),
+                City::find($registerRequest->input('city')),
                 Role::find(RoleEnum::MEMBER),
                 $registerRequest->input('bio'),
                 $registerRequest->input('phone'),
@@ -71,12 +71,12 @@ class AuthenticationController extends Controller
                 'user' => $user->with(['role', 'devices'])->get(),
             ];
 
-            Log::channel('api')->info('[Auth] New user created', [
+            Log::channel('api')->info('New user created', [
                 'email' => $user->email,
                 'id' => $user->id,
             ]);
         } catch (Exception $exception) {
-            Log::channel('api')->error('[Auth] '.$exception->getMessage(), [
+            Log::channel('api')->error($exception->getMessage(), [
                 $exception->getCode(),
                 $exception->getFile(),
             ]);
@@ -102,11 +102,11 @@ class AuthenticationController extends Controller
                 $user
             );
 
-            Log::channel('api')->info('[Auth] New device created for user '.$user->id, [
+            Log::channel('api')->info('New device created for user with id: '.$user->id, [
                 'ip' => $device->ip,
             ]);
         } catch (Exception $exception) {
-            Log::channel('api')->error('[Auth] '.$exception->getMessage(), [
+            Log::channel('api')->error($exception->getMessage(), [
                 $exception->getCode(),
                 $exception->getFile(),
             ]);
@@ -151,7 +151,7 @@ class AuthenticationController extends Controller
     }
 
     /**
-     * Signout a user.
+     * Sign out a user.
      *
      * @param Request $request
      *

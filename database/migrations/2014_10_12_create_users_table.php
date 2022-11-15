@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('avatar')->nullable();
             $table->string('bio')->nullable();
-            $table->string('city');
-            $table->tinyText('country');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('firstname');
@@ -28,6 +26,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('role_id');
         });
     }

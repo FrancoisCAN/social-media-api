@@ -15,8 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         /**
-         * Ignore Sanctum migrations as it has been moved
-         * to the current migrations' folder.
+         * Ignore Sanctum migrations as it has been moved to the basic migrations' folder.
          */
         Sanctum::ignoreMigrations();
     }
@@ -26,8 +25,5 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(): void
-    {
-        // No services.
-    }
+    public function boot(): void {}
 }

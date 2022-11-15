@@ -18,8 +18,8 @@ return new class extends Migration
             $table->tinyText('country');
             $table->ipAddress('ip');
             $table->string('name');
-            $table->string('organization');
-            $table->string('region');
+            $table->string('organization')->nullable();
+            $table->string('region')->nullable();
             $table->string('zip');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');

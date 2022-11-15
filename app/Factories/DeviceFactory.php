@@ -26,7 +26,7 @@ class DeviceFactory
         string $organization,
         string $region,
         string $zip,
-        User $user
+        User $user,
     ): Device {
         $device = new Device;
         $device->country = $country;

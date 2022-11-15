@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             RightSeeder::class,
             RoleSeeder::class,
             RightRoleSeeder::class,
+            UserSeeder::class,
             DeviceSeeder::class,
         ]);
     }
